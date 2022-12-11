@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('tahun_terbit');
             $table->string('synopsis');
             $table->string('genre');
-            $table->int('harga');
+            $table->integer('harga');
             $table->foreign('penulis')->references('id')->on('penulis');
 
             $table->timestamps();
