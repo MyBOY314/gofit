@@ -8,7 +8,8 @@ use App\Mail\PeminjamanMail; /* import model mail */
 
 use Illuminate\Mail\Mailable;
 use App\Models\Peminjaman; /* import model Peminjaman */
-use App\Models\Penulis; /* import model penulis */
+use App\Models\Buku; /* import model buku */
+use App\Models\Pengguna;
 use App\Http\Resources\PeminjamanResource;
 use Illuminate\Support\Facades\Validator;
 
@@ -26,44 +27,40 @@ class PeminjamanController extends Controller
     public function index()
     {
         //get posts
-        $peminjaman=Peminjaman::join('Peminjaman','Peminjaman.buku','=','buku.id')->select('buku.id','penulis.nama','penulis.tanggal_lahir','Peminjamans.waktu_mulai','penulis.deskripsi')->get();
-        $penulis = Penulis::all();
+        $peminjaman = Peminjaman::latest()->get();
+        // $peminjaman=Peminjaman::join('Peminjaman','Peminjaman.buku','=','buku.id')->select('buku.id','buku.nama','buku.tahun_terbit','buku.tahun_terbit','buku.synopsis'
+        // ,'buku.genre','buku.harga','buku.penulis','buku.created_at','buku.updated_at')->get();
+        // $buku = Buku::all();
+
         // render
         return new PeminjamanResource(true, 'List Data Peminjaman', $peminjaman);
     }  
 
     public function create()
     {
-        //get departemen
-        $penulis = Penulis::all();
+        //get 
+        $buku = Buku::all();
+        $pengguna = Pengguna::all();
         //render view with posts
-        return view('penulis.create', compact('penulis'));
+        return view('peminjaman.create', compact('buku'), compact('pengguna'));
     }
 
     public function store(Request $request)
     {
         //Validasi Formulir
         $validator = Validator::make($request ->all(), [
-            'nama' => 'required',
-            'tahun_terbit' => 'required|date',
-            'synopsis' => 'required',
-            'genre' => 'required',
-            'harga' => 'required',
-            'penulis' => 'penulis',
-            'waktu_mulai' => 'required|date',
-            'waktu_selesai' => 'required|date|after_or_equal:waktu_mulai'
+            'tanggal_peminjaman' => 'required|date',
+            'durasi_peminjaman' => 'required',
+            'buku' => 'required',
+            'pengguna' => 'required',
         ]);
         if ($validator->fails()) { return response()->json($validator->errors(), 422);         } 
         //Fungsi Simpan Data ke dalam Database
         $peminjaman = Peminjaman::create([
-            'nama_Peminjaman' => $request->nama,
-            'tahun_terbit' => $request->tahun_terbit,
-            'synopsis' => $request->synopsis,
-            'genre' => $request->genre,
-            'harga' => $request->harga,
-            'penulis' => $request->penulis,
-            'waktu_mulai' => $request->waktu_mulai,
-            'waktu_selesai' => $request->waktu_selesai,
+            'tanggal_peminjaman' => $request->tanggal_peminjaman,
+            'durasi_peminjaman' => $request->durasi_peminjaman,
+            'buku' => $request->buku,
+            'pengguna' => $request->pengguna,
         ]);
         return new PeminjamanResource(true, 'Data Peminjaman Berhasil Ditambahkan!', $peminjaman); 
 
@@ -72,7 +69,7 @@ class PeminjamanController extends Controller
         try {
             //Mengisi variabel yang akan ditampilkan pada view mail
             $content = [
-                'body' => $request->nomor_induk_Peminjaman,
+                'body' => $request->pengguna,
             ];
             Mail::to('davehabelpaprindey@gmail.com')->send(new Mailable($content));
             //Redirect jika berhasil mengirim email
@@ -93,14 +90,10 @@ class PeminjamanController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => 'required',
-            'tahun_terbit' => 'required|date',
-            'synopsis' => 'required',
-            'genre' => 'required',
-            'harga' => 'required',
-            'penulis' => 'penulis',
-            'waktu_mulai' => 'required|date',
-            'waktu_selesai' => 'required|date|after_or_equal:waktu_mulai'
+            'tanggal_peminjaman' => 'required|date',
+            'durasi_peminjaman' => 'required',
+            'buku' => 'required',
+            'pengguna' => 'required',
         ]);
 
         Peminjaman::find($id)->update($request->all());
@@ -110,9 +103,10 @@ class PeminjamanController extends Controller
     }
     public function edit($id)
     {
-        $peminjaman=Peminjaman::join('Peminjaman','Peminjaman.penulis','=','penulis.id')->select('penulis.id','penulis.nama','penulis.tanggal_lahir','Peminjamans.waktu_mulai','penulis.deskripsi')->find($id);
-        $penulis = Penulis::all();
-        return view('Peminjaman.edit',compact('Peminjaman','penulis'));
+        $peminjaman=Peminjaman::join('Peminjaman','Peminjaman.buku','=','buku.id')->select('buku.id','buku.nama','buku.tahun_terbit','buku.tahun_terbit','buku.synopsis'
+        ,'buku.genre','buku.harga','buku.penulis','buku.created_at','buku.updated_at')->get();
+        $buku = Buku::all();
+        return view('Peminjaman.edit',compact('peminjaman','buku'));
     }
 
     public function show($id){

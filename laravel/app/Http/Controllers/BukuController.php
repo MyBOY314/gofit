@@ -26,8 +26,9 @@ class BukuController extends Controller
     public function index()
     {
         //get posts
-        $buku=Buku::join('buku','buku.penulis','=','penulis.id')->select('penulis.id','penulis.nama','penulis.tanggal_lahir','bukus.waktu_mulai','penulis.deskripsi')->get();
-        $penulis = Penulis::all();
+        $buku = Buku::latest()->get();
+        // $buku=Buku::join('buku','buku.penulis','=','penulis.id')->select('penulis.id','penulis.nama','penulis.tanggal_lahir','bukus.waktu_mulai','penulis.deskripsi')->get();
+        // $penulis = Penulis::all();
         // render
         return new BukuResource(true, 'List Data Buku', $buku);
     }  
@@ -49,7 +50,7 @@ class BukuController extends Controller
             'synopsis' => 'required',
             'genre' => 'required',
             'harga' => 'required',
-            'penulis' => 'penulis',
+            'penulis' => 'required',
             'waktu_mulai' => 'required|date',
             'waktu_selesai' => 'required|date|after_or_equal:waktu_mulai'
         ]);
@@ -62,8 +63,8 @@ class BukuController extends Controller
             'genre' => $request->genre,
             'harga' => $request->harga,
             'penulis' => $request->penulis,
-            'waktu_mulai' => $request->waktu_mulai,
-            'waktu_selesai' => $request->waktu_selesai,
+            'waktu_mulai' => $request->created_at,
+            'waktu_selesai' => $request->updated_at,
         ]);
         return new BukuResource(true, 'Data buku Berhasil Ditambahkan!', $buku); 
 

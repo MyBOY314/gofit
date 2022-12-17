@@ -45,6 +45,7 @@ class ProyekController extends Controller
             'waktu_selesai' => 'required|date|after_or_equal:waktu_mulai',
             'status' => 'required'
         ]);
+        if ($validator->fails()) { return response()->json($validator->errors(), 422);         } 
         //Fungsi Simpan Data ke dalam Database
         $proyek = Proyek::create([
             'nama_proyek' => $request->nama_proyek,

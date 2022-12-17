@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Peminjaman extends Model
 {
@@ -15,5 +16,11 @@ class Peminjaman extends Model
         'durasi_peminjaman',  
         'buku',     
         'pengguna',
-     ]; 
+     ];
+     
+     public function getCreatedAtAttribute()
+     {
+         return Carbon::parse($this->attributes['tanggal_peminjaman'])
+         ->translatedFormat('l, d F Y');
+     }
 }

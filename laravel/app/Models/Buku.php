@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Buku extends Model
 {
@@ -18,5 +19,11 @@ class Buku extends Model
         'harga',
         'penulis',
      ];
+
+     public function getCreatedAtAttribute()
+     {
+         return Carbon::parse($this->attributes['tahun_terbit'])
+         ->translatedFormat('l, d F Y');
+     }
 
 }
