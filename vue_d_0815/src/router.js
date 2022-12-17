@@ -8,22 +8,22 @@ const routes = [
         component: () => import('@/components/DashboardLayout.vue'),
         children: [
             {
-                path: "/departemen",
-                name: "departemen.index",
+                path: "/pengguna",
+                name: "pengguna.index",
                 component: () =>
-                    import('@/views/Departemen/indexPage.vue'),
+                    import('@/views/Pengguna/indexPage.vue'),
             },
             {
-                path: "/departemen/create",
-                name: "departemen.create",
+                path: "/pengguna/create",
+                name: "pengguna.create",
                 component: () =>
-                    import('@/views/Departemen/createPage.vue'),
+                    import('@/views/Pengguna/createPage.vue'),
             },
             {
-                path: "/departemen/update",
-                name: "departemen.update",
+                path: "/pengguna/update",
+                name: "pengguna.update",
                 component: () =>
-                    import('@/views/Departemen/updatePage.vue'),
+                    import('@/views/Pengguna/updatePage.vue'),
             },
 
             {

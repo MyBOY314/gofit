@@ -22,4 +22,17 @@ App\Http\Controllers\PegawaiController::class);
 Route::apiResource('/proyeks',
 App\Http\Controllers\ProyekController::class); 
 
+Route::apiResource('/pengguna',
+App\Http\Controllers\PenggunaController::class); 
+
+Route::apiResource('/buku',
+App\Http\Controllers\BukuController::class); 
+
+Route::apiResource('/penulis',
+App\Http\Controllers\PenulisController::class); 
+
+Route::apiResource('/peminjaman',
+App\Http\Controllers\PeminjamanController::class); 
+
+
 

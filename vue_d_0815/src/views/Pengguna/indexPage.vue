@@ -7,25 +7,25 @@
             <div class="col-md-12">
                 <div class="card border-0 rounded shadow">
                     <div class="card-body">
-                        <router-link :to="{ name: 'departemen.create' }" class="btn btn-md btn-success">TAMBAH DEPARTEMEN</router-link>
+                        <router-link :to="{ name: 'pengguna.create' }" class="btn btn-md btn-success">TAMBAH PENGGUNA</router-link>
                         <table class="table table-striped table-bordered mt4">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th scope="col"><center>NAMA DEPARTEMEN</center></th>
-                                    <th scope="col"><center>NAMA MANAGER</center></th>
-                                    <th scope="col"><center>JUMLAH PEGAWAI</center></th>
+                                    <th scope="col"><center>NAMA PENGGUNA</center></th>
+                                    <th scope="col"><center>EMAIL</center></th>
+                                    <th scope="col"><center>TELEPON</center></th>
                                     <th scope="col"><center>Aksi</center></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(departemen, id) in departemens" :key="id">
-                                    <td><center>{{ departemen.nama_departemen }}</center></td>
-                                    <td><center>{{ departemen.nama_manager }}</center></td>
-                                    <td><center>{{ departemen.jumlah_pegawai }}</center></td>
+                                <tr v-for="(pengguna, id) in pengguna" :key="id">
+                                    <td><center>{{ pengguna.nama }}</center></td>
+                                    <td><center>{{ pengguna.email }}</center></td>
+                                    <td><center>{{ pengguna.telepon }}</center></td>
                                     <td class="text-center">
 
                                         <router-link :to="{ name:
-    'departemen.update', params: { id: departemen.id } }" class="btn
+    'pengguna.update', params: { id: pengguna.id } }" class="btn
     btn-sm btn-primary mr-1">
     EDIT</router-link>
     <button @click="deleteFromRow(id)" class="btn btn-sm btn-danger ml1">DELETE</button>
@@ -46,25 +46,25 @@ import { onMounted, ref } from 'vue'
 export default {
     setup() {
         //reactive state
-        let departemens = ref([])
+        let pengguna = ref([])
         //mounted
         onMounted(() => {
             //get API from Laravel Backend
-            axios.get('http://127.0.0.1:8000/api/departemens')
+            axios.get('http://127.0.0.1:8000/api/pengguna')
                 .then(response => {
                     //assign state posts with response data
-                    departemens.value = response.data.data
+                    pengguna.value = response.data.data
                 }).catch(error => {
                     console.log(error.response.data)
                 })
         })
 
         function destroy(id){
-            axios.delete(`http://127.0.0.1:8000/api/departemens/${id}`)
+            axios.delete(`http://127.0.0.1:8000/api/pengguna/${id}`)
                 .then(() => {
-                    const index = this.departemens.findIndex(departemen => departemen.id === id)
+                    const index = this.pengguna.findIndex(pengguna => pengguna.id === id)
                     if(index){
-                        this.departemens.splice(index, 1)
+                        this.pengguna.splice(index, 1)
                     }
                 
                 }).catch(error => {
@@ -74,7 +74,7 @@ export default {
 
         //return
         return {
-            departemens,
+            pengguna,
             destroy
         }
 
@@ -83,18 +83,18 @@ export default {
     methods: {
         deleteFromRow(id) {
 
-axios.delete(`http://127.0.0.1:8000/api/pegawais/${id}`)
+axios.delete(`http://127.0.0.1:8000/api/pengguna/${id}`)
         .then(() => {
-            const index = this.pegawais.findIndex(pegawai => pegawai.id === id)
+            const index = this.pengguna.findIndex(pengguna => pengguna.id === id)
             if(index){
-                this.pegawais.splice(id, 1)
+                this.pengguna.splice(id, 1)
             }
         
         }).catch(error => {
             console.log(error.response.data)
         })
 
-this.pegawais.splice(id, 1);
+this.pengguna.splice(id, 1);
 }
 }
         

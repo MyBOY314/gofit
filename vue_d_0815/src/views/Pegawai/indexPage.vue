@@ -7,11 +7,11 @@
             <div class="col-md-12">
                 <div class="card border-0 rounded shadow">
                     <div class="card-body">
-                        <router-link :to="{ name: 'pegawai.create' }" class="btn btn-md btn-success">TAMBAH PEGAWAI</router-link>
+                        <router-link :to="{ name: 'pegawai.create' }" class="btn btn-md btn-success">TAMBAH PENGGUNA</router-link>
                         <table class="table table-striped table-bordered mt4">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th scope="col"><center>NIP</center></th>
+                                    <th scope="col"><center>ID PENGGUNA</center></th>
                                     <th scope="col"><center>NAMA PEGAWAI</center></th>
                                     <th scope="col"><center>DEPARTEMEN</center></th>
                                     <th scope="col"><center>EMAIL</center></th>
