@@ -14,3 +14,8 @@ const app = createApp(App)
 //use vue router
 app.use(router)
 app.mount('#app')
+
+// import {BootstrapVue, IconsPlugin} from 'bootstrap-vue'
+// //bootstrap
+// app.use(BootstrapVue)
+// app.use(IconsPlugin)

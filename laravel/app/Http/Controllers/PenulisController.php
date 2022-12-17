@@ -55,7 +55,7 @@ class PenulisController extends Controller
         ]);
         return new PenulisResource(true, 'Data Penulis Berhasil Ditambahkan!', $penulis); 
 
-         return redirect()->route('Penulis.index')
+         return redirect()->route('penulis.index')
                           ->with('success','Item deleted successfully'); 
         try {
             //Mengisi variabel yang akan ditampilkan pada view mail
@@ -94,7 +94,7 @@ class PenulisController extends Controller
     }
     public function edit($id)
     {
-        $penulis = penulis::findOrfail($id);
+        $penulis = Penulis::findOrfail($id);
         return view('Penulis.edit',compact('Penulis'));
     }
 

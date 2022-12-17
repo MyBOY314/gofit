@@ -32,7 +32,7 @@ class ProyekController extends Controller
         //get departemen
         $departemen = Departemen::all();
         //render view with posts
-        return view('proyek.create', compact('departemen'));
+        return view('proyeks.create', compact('departemen'));
     }
 
     public function store(Request $request)

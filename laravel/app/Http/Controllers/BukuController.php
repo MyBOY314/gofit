@@ -38,7 +38,7 @@ class BukuController extends Controller
         //get departemen
         $penulis = Penulis::all();
         //render view with posts
-        return view('penulis.create', compact('penulis'));
+        return view('buku.create', compact('penulis'));
     }
 
     public function store(Request $request)
@@ -51,8 +51,6 @@ class BukuController extends Controller
             'genre' => 'required',
             'harga' => 'required',
             'penulis' => 'required',
-            'waktu_mulai' => 'required|date',
-            'waktu_selesai' => 'required|date|after_or_equal:waktu_mulai'
         ]);
         if ($validator->fails()) { return response()->json($validator->errors(), 422);         } 
         //Fungsi Simpan Data ke dalam Database
@@ -63,8 +61,6 @@ class BukuController extends Controller
             'genre' => $request->genre,
             'harga' => $request->harga,
             'penulis' => $request->penulis,
-            'waktu_mulai' => $request->created_at,
-            'waktu_selesai' => $request->updated_at,
         ]);
         return new BukuResource(true, 'Data buku Berhasil Ditambahkan!', $buku); 
 
@@ -100,8 +96,6 @@ class BukuController extends Controller
             'genre' => 'required',
             'harga' => 'required',
             'penulis' => 'penulis',
-            'waktu_mulai' => 'required|date',
-            'waktu_selesai' => 'required|date|after_or_equal:waktu_mulai'
         ]);
 
         Buku::find($id)->update($request->all());
