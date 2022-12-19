@@ -8,33 +8,33 @@
                         <hr>
                         <form @submit.prevent="update">
                             <div class="form-group mb-3">
-                                <label class="form-label">Nama Departemen</label>
-                                <input type="text" class="form-control" v-model="departemen.nama_departemen"
-                                    placeholder={{departemen.nama_departemen}}>
+                                <label class="form-label">Nama Pengguna</label>
+                                <input type="text" class="form-control" v-model="pengguna.nama"
+                                    placeholder={{pengguna.nama}}>
                                 <!-- validation -->
-                                <div v-if="validation.nama_departemen" class="mt-2 alert alert-danger">
+                                <div v-if="validation.nama" class="mt-2 alert alert-danger">
                                     {{
-                                            validation.nama_departemen[0]
+                                            validation.nama[0]
                                     }}
                                 </div>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="content" class="form-label">Nama Manager</label>
-                                <input class="form-control" v-model="departemen.nama_manager" placeholder="Masukkan nama manager">
+                                <label for="content" class="form-label">Email</label>
+                                <input type="text" class="form-control" v-model="pengguna.email" placeholder={{pengguna.email}}>
                                 <!-- validation -->
-                                <div v-if="validation.nama_manager" class="mt-2 alert alert-danger">
-                                    {{ validation.nama_manager[0]
+                                <div v-if="validation.email" class="mt-2 alert alert-danger">
+                                    {{ validation.email[0]
                                     }}
                                 </div>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="content" class="form-label">Jumlah Pegawai</label>
-                                <input class="form-control" type="number" v-model="departemen.jumlah_pegawai"
-                                    placeholder="Masukkan jumlah pegawai">
+                                <label for="content" class="form-label">Telepon</label>
+                                <input class="form-control" v-model="pengguna.telepon"
+                                    placeholder={{pengguna.telepon}}>
                                 <!-- validation -->
-                                <div v-if="validation.jumlah_pegawai" class="mt-2 alert alert-danger">
+                                <div v-if="validation.telepon" class="mt-2 alert alert-danger">
                                     {{
-                                            validation.jumlah_pegawai[0]
+                                            validation.telepon[0]
                                     }}
                                 </div>
                             </div>
@@ -54,11 +54,11 @@ import axios from 'axios'
 
 export default {
     setup() {
-        //state departemen
-        const departemen = reactive({
-            nama_departemen: '',
-            nama_manager: '',
-            jumlah_pegawai: ''
+        //state pengguna
+        const pengguna = reactive({
+            pengguna: '',
+            email: '',
+            telepon: ''
         })
         //state validation
         const validation = ref([])
@@ -70,13 +70,13 @@ export default {
 onMounted(() => {
 
 //get API from Laravel Backend
-axios.get(`http://localhost:8000/api/departemens/${route.params.id}`)
+axios.get(`http://localhost:8000/api/penggunas/${route.params.id}`)
 .then(response => {
             
-    //assign state departemen with response data
-    departemen.nama_departemen= response.data.data.nama_departemen,
-    departemen.nama_manager= response.data.data.nama_manager,
-    departemen.jumlah_pegawai= response.data.data.jumlah_pegawai
+    //assign state pengguna with response data
+    pengguna.nama= response.data.data.nama,
+    pengguna.email= response.data.data.email,
+    pengguna.telepon= response.data.data.telepon
 
 }).catch(error => {
     console.log(error.response.data)
@@ -85,17 +85,17 @@ axios.get(`http://localhost:8000/api/departemens/${route.params.id}`)
 })
         //method update
         function update() {
-            let nama_departemen = departemen.nama_departemen
-            let nama_manager = departemen.nama_manager
-            let jumlah_pegawai = departemen.jumlah_pegawai
-            axios.put(`http://localhost:8000/api/departemens/${route.params.id}`, {
-                nama_departemen: nama_departemen,
-                nama_manager: nama_manager,
-                jumlah_pegawai: jumlah_pegawai
+            let nama = pengguna.nama
+            let email = pengguna.email
+            let telepon = pengguna.telepon
+            axios.put(`http://localhost:8000/api/penggunas/${route.params.id}`, {
+                nama: nama,
+                email: email,
+                telepon: telepon
             }).then(() => {
                 //redirect ke post index
                 router.push({
-                    name: 'departemen.index'
+                    name: 'pengguna.index'
                 })
             }).catch(error => {
                 //assign state validation with error
@@ -104,7 +104,7 @@ axios.get(`http://localhost:8000/api/departemens/${route.params.id}`)
         }
         //return
         return {
-            departemen,
+            pengguna,
             validation,
             router,
             update

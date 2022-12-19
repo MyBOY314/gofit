@@ -4,37 +4,48 @@
             <div class="col-md-12">
                 <div class="card border-0 rounded shadow">
                     <div class="card-body">
-                        <h4>TAMBAH POST</h4>
+                        <h4>TAMBAH PENGGUNA</h4>
                         <hr>
                         <form @submit.prevent="store">
                             <div class="form-group mb-3">
-                                <label class="form-label">Nama Departemen</label>
-                                <input type="text" class="form-control" v-model="departemen.nama_departemen"
-                                    placeholder="Masukkan nama departemen">
+                                <label class="form-label">Nama Pengguna</label>
+                                <input type="text" class="form-control" v-model="pengguna.nama"
+                                    placeholder="Masukkan Nama Pengguna">
                                 <!-- validation -->
-                                <div v-if="validation.nama_departemen" class="mt-2 alert alert-danger">
+                                <div v-if="validation.nama" class="mt-2 alert alert-danger">
                                     {{
-                                            validation.nama_departemen[0]
+                                            validation.nama[0]
                                     }}
                                 </div>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="content" class="form-label">Nama Manager</label>
-                                <input class="form-control" v-model="departemen.nama_manager" placeholder="Masukkan nama manager">
+                                <label for="content" class="form-label">Password</label>
+                                <input class="form-control" v-model="pengguna.password"
+                                    placeholder="Masukkan Password">
                                 <!-- validation -->
-                                <div v-if="validation.nama_manager" class="mt-2 alert alert-danger">
-                                    {{ validation.nama_manager[0]
+                                <div v-if="validation.password" class="mt-2 alert alert-danger">
+                                    {{
+                                            validation.password[0]
                                     }}
                                 </div>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="content" class="form-label">Jumlah Pegawai</label>
-                                <input class="form-control" type="number" v-model="departemen.jumlah_pegawai"
-                                    placeholder="Masukkan jumlah pegawai">
+                                <label for="content" class="form-label">Email</label>
+                                <input class="form-control" v-model="pengguna.email" placeholder="Masukkan Email">
                                 <!-- validation -->
-                                <div v-if="validation.jumlah_pegawai" class="mt-2 alert alert-danger">
+                                <div v-if="validation.email" class="mt-2 alert alert-danger">
+                                    {{ validation.email[0]
+                                    }}
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="content" class="form-label">Telepon</label>
+                                <input class="form-control" v-model="pengguna.telepon"
+                                    placeholder="Masukkan Nomor Telepon">
+                                <!-- validation -->
+                                <div v-if="validation.telepon" class="mt-2 alert alert-danger">
                                     {{
-                                            validation.jumlah_pegawai[0]
+                                            validation.telepon[0]
                                     }}
                                 </div>
                             </div>
@@ -52,11 +63,12 @@ import { useRouter } from 'vue-router'
 import axios from 'axios'
 export default {
     setup() {
-        //state departemen
-        const departemen = reactive({
-            nama_departemen: '',
-            nama_manager: '',
-            jumlah_pegawai: ''
+        //state pengguna
+        const pengguna = reactive({
+            pengguna: '',
+            password: '',
+            email: '',
+            telepon: ''
         })
         //state validation
         const validation = ref([])
@@ -64,17 +76,19 @@ export default {
         const router = useRouter()
         //method store
         function store() {
-            let nama_departemen = departemen.nama_departemen
-            let nama_manager = departemen.nama_manager
-            let jumlah_pegawai = departemen.jumlah_pegawai
-            axios.post('http://localhost:8000/api/departemens', {
-                nama_departemen: nama_departemen,
-                nama_manager: nama_manager,
-                jumlah_pegawai: jumlah_pegawai
+            let nama = pengguna.nama
+            let password = pengguna.password
+            let email = pengguna.email
+            let telepon = pengguna.telepon
+            axios.post('http://localhost:8000/api/penggunas', {
+                nama: nama,
+                password: password,
+                email: email,
+                telepon: telepon
             }).then(() => {
                 //redirect ke post index
                 router.push({
-                    name: 'departemen.index'
+                    name: 'pengguna.index'
                 })
             }).catch(error => {
                 //assign state validation with error
@@ -83,7 +97,7 @@ export default {
         }
         //return
         return {
-            departemen,
+            pengguna,
             validation,
             router,
             store
