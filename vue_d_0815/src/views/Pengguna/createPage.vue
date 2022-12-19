@@ -91,7 +91,7 @@ export default {
             let password = pengguna.password
             let email = pengguna.email
             let telepon = pengguna.telepon
-            axios.post('http://localhost:8000/api/penggunas', {
+            axios.post('http://localhost:8000/api/pengguna', {
                 nama: nama,
                 password: password,
                 email: email,

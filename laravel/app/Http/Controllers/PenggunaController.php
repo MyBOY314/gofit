@@ -84,14 +84,13 @@ class PenggunaController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'password' => 'required',
             'email' => 'required',
             'telepon' => 'required',
         ]);
 
         Pengguna::find($id)->update($request->all());
 
-        return redirect()->route('Pengguna.index')
+        return redirect()->route('pengguna.index')
                         ->with('success','Item updated successfully');
     }
     public function edit($id)

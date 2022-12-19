@@ -25,10 +25,10 @@
                                     <td class="text-center">
 
                                         <router-link :to="{ name:
-    'pengguna.update', params: { id: pengguna.id } }" class="btn
+   'pengguna.update', params: { id: pengguna.id } }" class="btn
     btn-sm btn-primary mr-1">
     EDIT</router-link>
-    <button @click="deleteFromRow(id)" class="btn btn-sm btn-danger ml1">DELETE</button>
+    <button @click="deleteFromRow(pengguna.id)" class="btn btn-sm btn-danger ml1">DELETE</button>
 
                                     </td>
                                 </tr>

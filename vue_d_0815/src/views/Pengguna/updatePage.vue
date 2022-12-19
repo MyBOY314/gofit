@@ -70,7 +70,7 @@ export default {
 onMounted(() => {
 
 //get API from Laravel Backend
-axios.get(`http://localhost:8000/api/penggunas/${route.params.id}`)
+axios.get(`http://localhost:8000/api/pengguna/${route.params.id}`)
 .then(response => {
             
     //assign state pengguna with response data
@@ -88,7 +88,7 @@ axios.get(`http://localhost:8000/api/penggunas/${route.params.id}`)
             let nama = pengguna.nama
             let email = pengguna.email
             let telepon = pengguna.telepon
-            axios.put(`http://localhost:8000/api/penggunas/${route.params.id}`, {
+            axios.put(`http://localhost:8000/api/pengguna/${route.params.id}`, {
                 nama: nama,
                 email: email,
                 telepon: telepon
