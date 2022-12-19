@@ -51,7 +51,7 @@ class PenggunaController extends Controller
         //Fungsi Simpan Data ke dalam Database
         $pengguna = Pengguna::create([
             'nama' => $request->nama,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
             'email' => $request->email,
             'telepon' => $request->telepon,
         ]);
