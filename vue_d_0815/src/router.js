@@ -12,11 +12,11 @@ const routes = [
         name: 'login',
         component: () => import('@/components/LoginLayout.vue'),
     },
-    // {
-    //     path: '/register',
-    //     name: 'register',
-    //     component: () => import('@/components/RegisterPage.vue'),
-    // },
+    {
+        path: '/register',
+        name: 'register',
+        component: () => import('@/components/RegistrationLayout.vue'),
+    },
     {
         path: '/beranda',
         name: 'beranda',
@@ -39,6 +39,44 @@ const routes = [
                 name: "pengguna.update",
                 component: () =>
                     import('@/views/Pengguna/updatePage.vue'),
+            },
+
+            {
+                path: "/peminjaman",
+                name: "peminjaman.index",
+                component: () =>
+                    import('@/views/Peminjaman/indexPage.vue'),
+            },
+            {
+                path: "/peminjaman/create",
+                name: "peminjaman.create",
+                component: () =>
+                    import('@/views/Peminjaman/createPage.vue'),
+            },
+            {
+                path: "/peminjaman/update",
+                name: "peminjaman.update",
+                component: () =>
+                    import('@/views/Peminjaman/updatePage.vue'),
+            },
+
+            {
+                path: "/penulis",
+                name: "penulis.index",
+                component: () =>
+                    import('@/views//Penulis/indexPage.vue'),
+            },
+            {
+                path: "/penulis/create",
+                name: "penulis.create",
+                component: () =>
+                    import('@/views/Penulis/createPage.vue'),
+            },
+            {
+                path: "/penulis/update",
+                name: "penulis.update",
+                component: () =>
+                    import('@/views/Penulis/updatePage.vue'),
             },
 
             {

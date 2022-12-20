@@ -5,12 +5,8 @@
               <!-- Nama : nama panggilan kalian -->
               <a class="navbar-brand fw-bold" href="../index.php">COMIC READER 10815</a>
               <div class="d-flex justify-content-end">
-                  <button class="btn btn-primary me-2" type="button">
-                      <a class="text-light" style="text-decoration: none" href="./page/registerPage.php">Sign Up</a>
-                  </button>
-                  <button class="btn btn-warning ms-2" type="button" href="./loginPage.php">
-                      <a class="text-light" style="text-decoration: none" href="./page/loginPage.php">Login</a>
-                  </button>
+                    <router-link :to="{ name: 'register' }" class="btn btn-primary me-2">Sign Up</router-link>
+                    <router-link :to="{ name: 'login' }" class="btn btn-warning ms-2">Login</router-link>
               </div>
           </div>
       </nav>
@@ -53,8 +49,10 @@
                     </div>
   
                     <a class="small text-muted" href="#!">Forgot password?</a>
-                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="#!"
-                        style="color: #393f81;">Register here</a></p>
+                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account?
+                        <router-link :to="{ name: 'register' }" class="btn btn-primary">Register Here</router-link>
+                    </p>
+                    
                     <a href="#!" class="small text-muted">Terms of use.</a>
                     <a href="#!" class="small text-muted">Privacy policy</a>
                   </form>
