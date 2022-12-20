@@ -7,11 +7,11 @@ const routes = [
         name: 'welcome',
         component: () => import('@/components/OpeningPage.vue'),
     },
-    // {
-    //     path: '/login',
-    //     name: 'login',
-    //     component: () => import('@/components/LoginPage.vue'),
-    // },
+    {
+        path: '/login',
+        name: 'login',
+        component: () => import('@/components/LoginLayout.vue'),
+    },
     // {
     //     path: '/register',
     //     name: 'register',
