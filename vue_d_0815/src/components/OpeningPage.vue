@@ -19,68 +19,15 @@
       }
     </style> -->
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block">
-      <div class="container-fluid">
-        <!-- Navbar brand -->
-        <a class="navbar-brand nav-link" target="_blank" href="https://mdbootstrap.com/docs/standard/">
-          <strong>MDB</strong>
-        </a>
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
-          aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarExample01">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" aria-current="page" href="#intro">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="@/components/LoginLayout.vue" rel="nofollow"
-                target="_blank">Login Page</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://mdbootstrap.com/docs/standard/" target="_blank">Download MDB UI KIT</a>
-            </li>
-          </ul>
-
-          <ul class="navbar-nav d-flex flex-row">
-            <!-- Icons -->
-            <li class="nav-item me-3 me-lg-0">
-              <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow"
-                target="_blank">
-                <i class="fab fa-youtube"></i>
-              </a>
-            </li>
-            <li class="nav-item me-3 me-lg-0">
-              <a class="nav-link" href="https://www.facebook.com/mdbootstrap" rel="nofollow" target="_blank">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-            </li>
-            <li class="nav-item me-3 me-lg-0">
-              <a class="nav-link" href="https://twitter.com/MDBootstrap" rel="nofollow" target="_blank">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </li>
-            <li class="nav-item me-3 me-lg-0">
-              <a class="nav-link" href="https://github.com/mdbootstrap/mdb-ui-kit" rel="nofollow" target="_blank">
-                <i class="fab fa-github"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- Navbar -->
-
     <!-- Background image -->
     <div id="intro" class="bg-image shadow-2-strong">
-      <div class="mask" style="background-color: gray;">
-        <img src="https://media.tenor.com/yNTqwBCqyyAAAAAC/%E3%83%AF…%E3%83%9B%E3%83%AD%E3%83%A9%E3%82%A4%E3%83%96.gif" class="img-fluid" 
+      <div class="mask" style="background-color: cadetblue;">
+        <img src="https://media.tenor.com/1rvpTvBQfrQAAAAC/bookshelf-books.gif" class="img-fluid" 
         style="display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;" />
+  height:50%;
+  width: 20%;" />
         <div class="container d-flex align-items-center justify-content-center text-center h-100">
           <div class="text-white">
             <h1 class="mb-3">Comic Reader Kelompok 6</h1>
@@ -252,7 +199,7 @@
               <div class="text-center">
                 <p>or sign up with:</p>
                 <button type="button" class="btn btn-primary btn-floating mx-1">
-                  <i class="fab fa-facebook-f"></i>
+                  <i class="fab-fa-facebook-f"></i>
                 </button>
 
                 <button type="button" class="btn btn-primary btn-floating mx-1">
@@ -290,25 +237,7 @@
 
     <hr class="m-0" />
 
-    <div class="text-center py-4 align-items-center">
-      <p>Follow MDB on social media</p>
-      <a href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" class="btn btn-primary m-1" role="button"
-        rel="nofollow" target="_blank">
-        <i class="fab fa-youtube"></i>
-      </a>
-      <a href="https://www.facebook.com/mdbootstrap" class="btn btn-primary m-1" role="button" rel="nofollow"
-        target="_blank">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a href="https://twitter.com/MDBootstrap" class="btn btn-primary m-1" role="button" rel="nofollow"
-        target="_blank">
-        <i class="fab fa-twitter"></i>
-      </a>
-      <a href="https://github.com/mdbootstrap/mdb-ui-kit" class="btn btn-primary m-1" role="button" rel="nofollow"
-        target="_blank">
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
+
 
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">

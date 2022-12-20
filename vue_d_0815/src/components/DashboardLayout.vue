@@ -6,6 +6,7 @@
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <router-link :to="{ name: 'opening' }" class="btn btn-outline-light btn-lg m-2">Back</router-link>
     </header>
     <div class="container-fluid">
         <div class="row">
