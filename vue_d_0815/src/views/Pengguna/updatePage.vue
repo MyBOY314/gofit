@@ -39,6 +39,8 @@
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary">SIMPAN</button>
+                            <router-link :to="{ name: 'pengguna.index' }" type="submit" class="btn btn-danger">BACK</router-link>
+                            
                         </form>
                     </div>
                 </div>

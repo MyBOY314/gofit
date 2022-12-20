@@ -76,6 +76,11 @@
     <!-- Background image -->
     <div id="intro" class="bg-image shadow-2-strong">
       <div class="mask" style="background-color: gray;">
+        <img src="https://media.tenor.com/yNTqwBCqyyAAAAAC/%E3%83%AF…%E3%83%9B%E3%83%AD%E3%83%A9%E3%82%A4%E3%83%96.gif" class="img-fluid" 
+        style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;" />
         <div class="container d-flex align-items-center justify-content-center text-center h-100">
           <div class="text-white">
             <h1 class="mb-3">Comic Reader Kelompok 6</h1>
@@ -100,7 +105,7 @@
         <div class="row">
           <div class="col-md-6 gx-5 mb-4">
             <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
-              <img src="	https://media.tenor.com/I05p_91Dph8AAAAd/cyberpunk-edgerunners-cyberpunk.gif" class="img-fluid" />
+              <img src="https://media.tenor.com/I05p_91Dph8AAAAd/cyberpunk-edgerunners-cyberpunk.gif" class="img-fluid" />
               <a href="#!">
                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
               </a>

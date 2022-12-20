@@ -49,7 +49,7 @@
                     </div>
   
                     <div class="pt-1 mb-4">
-                      <button class="btn btn-dark btn-lg btn-block" type="button">Login</button>
+                        <router-link :to="{ name: 'beranda' }" class="btn btn-dark btn-lg btn-block">Login</router-link>
                     </div>
   
                     <a class="small text-muted" href="#!">Forgot password?</a>
