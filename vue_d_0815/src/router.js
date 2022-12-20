@@ -4,6 +4,21 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
     {
         path: '/',
+        name: 'welcome',
+        component: () => import('@/components/OpeningPage.vue'),
+    },
+    // {
+    //     path: '/login',
+    //     name: 'login',
+    //     component: () => import('@/components/LoginPage.vue'),
+    // },
+    // {
+    //     path: '/register',
+    //     name: 'register',
+    //     component: () => import('@/components/RegisterPage.vue'),
+    // },
+    {
+        path: '/beranda',
         name: 'beranda',
         component: () => import('@/components/DashboardLayout.vue'),
         children: [
