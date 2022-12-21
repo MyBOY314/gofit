@@ -82,9 +82,8 @@ class PenulisController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'password' => 'required',
-            'email' => 'required',
-            'telepon' => 'required',
+            'tanggal_lahir' => 'required|date',
+            'deskripsi' => 'required',
         ]);
 
         Penulis::find($id)->update($request->all());

@@ -22,9 +22,11 @@
                                 <tr v-for="(peminjaman, id) in peminjaman" :key="id">
                                     <td><center>{{ peminjaman.tanggal_peminjaman }}</center></td>
                                     <td><center>{{ peminjaman.durasi_peminjaman }}</center></td>
-                                    <td><center>{{ buku.nama }}</center></td>
+                                    <td><center>{{ peminjaman.buku }}</center></td>
                                     <td v-for="pengguna in pengguna" :key="pengguna.id" :value="pengguna.id">
-                                    <center>{{ pengguna.nama }}</center></td>
+                                    <!-- <td v-if="pengguna.id === peminjaman.pengguna"></td> -->
+                                    <center>
+                                        {{ pengguna.nama }}</center></td>
                                     <td class="text-center">
 
                                         <router-link :to="{ name:
@@ -103,6 +105,7 @@ let pengguna = ref([])
                     console.log(error.response.data)
                 })
         }
+        
 
         //return
         return {
