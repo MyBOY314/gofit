@@ -85,7 +85,7 @@ export default {
             let buku = peminjaman.buku
             let pengguna = peminjaman.pengguna
             axios.post('http://localhost:8000/api/peminjaman', {
-                nama: waktu_mulai,
+                waktu_mulai: waktu_mulai,
                 durasi_peminjaman: durasi_peminjaman,
                 buku: buku,
                 pengguna: pengguna,

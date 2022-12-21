@@ -2,7 +2,7 @@
     <nav class="navbar navbar-dark bg-dark fixed-top">
         <div class="container">
             <!-- Nama : nama panggilan kalian -->
-            <router-link :to="{ name: 'beranda' }" class="btn btn-info me-2">Return</router-link>
+            <router-link :to="{ name: 'login' }" class="btn btn-info me-2">Return</router-link>
             <a class="navbar-brand fw-bold" href="../index.php">COMIC READER 10815</a>
             <div class="d-flex justify-content-end">
                 <router-link :to="{ name: 'register' }" class="btn btn-primary me-2">Sign Up</router-link>
@@ -122,7 +122,7 @@ export default {
             }).then(() => {
                 //redirect ke post index
                 router.push({
-                    name: 'pengguna.index'
+                    name: 'login'
                 })
             }).catch(error => {
                 //assign state validation with error

@@ -29,17 +29,17 @@
                                     }}
                                 </div>
                             </div>
-                            <div class="form-group mb-3">
+                            <!-- <div class="form-group mb-3">
                                 <label for="content" class="form-label">Konfirmasi Password</label>
                                 <input class="form-control" v-model="pengguna.password"
                                     placeholder="Konfirmasi Password">
-                                <!-- validation -->
+
                                 <div v-if="validation.password" class="mt-2 alert alert-danger">
                                     {{
                                             validation.password[0]
                                     }}
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="form-group mb-3">
                                 <label for="content" class="form-label">Email</label>
                                 <input class="form-control" v-model="pengguna.email" placeholder="Masukkan Email">

@@ -30,11 +30,17 @@
                             <router-link :to="{ name: 'peminjaman.index' }" class="nav-link">Peminjaman</router-link>
                         </li>
                         <li class="nav-item">
+                            <router-link :to="{ name: 'penulis.index' }" class="nav-link">Penulis</router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link :to="{ name: 'buku.index' }" class="nav-link">Buku</router-link>
+                        </li>
+                        <!-- <li class="nav-item">
                             <router-link :to="{ name: 'pegawai.index' }" class="nav-link">Pegawai</router-link>
                         </li>
                         <li class="nav-item">
                             <router-link :to="{ name: 'proyek.index' }" class="nav-link">Proyek</router-link>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </nav>

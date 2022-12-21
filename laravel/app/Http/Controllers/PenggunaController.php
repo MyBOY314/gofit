@@ -44,8 +44,8 @@ class PenggunaController extends Controller
         $validator = Validator::make($request ->all(), [
             'nama' => 'required',
             'password' => 'required',
-            'email' => 'required',
-            'telepon' => 'required',
+            'email' => 'required|email:rfc,dns|unique:users',
+            'telepon' => 'required|numeric|digits_between:11,13|starts_with:08'
         ]);
         if ($validator->fails()) { return response()->json($validator->errors(), 422);         } 
         //Fungsi Simpan Data ke dalam Database

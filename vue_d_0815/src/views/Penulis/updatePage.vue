@@ -4,96 +4,42 @@
             <div class="col-md-12">
                 <div class="card border-0 rounded shadow">
                     <div class="card-body">
-                        <h4>UPDATE POST</h4>
+                        <h4>EDIT PENULIS</h4>
                         <hr>
-                        <form @submit.prevent="update">
+                        <form @submit.prevent="store">
                             <div class="form-group mb-3">
-                                <label class="form-label">Nomor Induk Pegawai</label>
-                                <input type="text" class="form-control" v-model="pegawai.nomor_induk_pegawai"
-                                    placeholder={{pegawai.nomor_induk_pegawai}}>
+                                <label class="form-label">Nama Penulis</label>
+                                <input type="text" class="form-control" v-model="penulis.nama"
+                                    placeholder={{penulis.nama}}>
                                 <!-- validation -->
-                                <div v-if="validation.nomor_induk_pegawai" class="mt-2 alert alert-danger">
+                                <div v-if="validation.nama" class="mt-2 alert alert-danger">
                                     {{
-                                            validation.nomor_induk_pegawai[0]
+                                            validation.nama[0]
                                     }}
                                 </div>
                             </div>
                             <div class="form-group mb-3">
-                                <label class="form-label">Nama pegawai</label>
-                                <input type="text" class="form-control" v-model="pegawai.nama_pegawai"
-                                    placeholder={{pegawai.nama_pegawai}}>
+                                <label for="content" class="form-label">Tanggal Lahir</label>
+                                <input class="form-control" v-model="penulis.tanggal_lahir" placeholder={{penulis.tanggal_lahir}}>
                                 <!-- validation -->
-                                <div v-if="validation.nama_pegawai" class="mt-2 alert alert-danger">
-                                    {{
-                                            validation.nama_pegawai[0]
+                                <div v-if="validation.tanggal_lahir" class="mt-2 alert alert-danger">
+                                    {{ validation.tanggal_lahir[0]
                                     }}
                                 </div>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="content" class="form-label">Nama Manager</label>
-                                <input class="form-control" v-model="pegawai.nama_manager" placeholder="Masukkan nama manager">
+                                <label for="content" class="form-label">Deskripsi</label>
+                                <input class="form-control" v-model="penulis.deskripsi"
+                                    placeholder={{penulis.deskripsi}}>
                                 <!-- validation -->
-                                <div v-if="validation.nama_manager" class="mt-2 alert alert-danger">
-                                    {{ validation.nama_manager[0]
-                                    }}
-                                </div>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="content" class="form-label">Jumlah Pegawai</label>
-                                <input class="form-control" type="number" v-model="pegawai.jumlah_pegawai"
-                                    placeholder="Masukkan jumlah pegawai">
-                                <!-- validation -->
-                                <div v-if="validation.jumlah_pegawai" class="mt-2 alert alert-danger">
+                                <div v-if="validation.deskripsi" class="mt-2 alert alert-danger">
                                     {{
-                                            validation.jumlah_pegawai[0]
-                                    }}
-                                </div>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="content" class="form-label">Email</label>
-                                <input class="form-control" type="number" v-model="pegawai.email"
-                                    placeholder="Masukkan Email">
-                                <!-- validation -->
-                                <div v-if="validation.email" class="mt-2 alert alert-danger">
-                                    {{
-                                            validation.email[0]
-                                    }}
-                                </div>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="content" class="form-label">Nomor Telepon</label>
-                                <input class="form-control" type="number" v-model="pegawai.telepon"
-                                    placeholder="Masukkan nomor telepon">
-                                <!-- validation -->
-                                <div v-if="validation.telepon" class="mt-2 alert alert-danger">
-                                    {{
-                                            validation.telepon[0]
-                                    }}
-                                </div>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="content" class="form-label">Gender</label>
-                                <input class="form-control" type="number" v-model="pegawai.gender"
-                                    placeholder="Masukkan Gender">
-                                <!-- validation -->
-                                <div v-if="validation.gender" class="mt-2 alert alert-danger">
-                                    {{
-                                            validation.gender[0]
-                                    }}
-                                </div>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="content" class="form-label">Status</label>
-                                <input class="form-control" type="number" v-model="pegawai.status"
-                                    placeholder="Masukkan Status">
-                                <!-- validation -->
-                                <div v-if="validation.status" class="mt-2 alert alert-danger">
-                                    {{
-                                            validation.status[0]
+                                            validation.deskripsi[0]
                                     }}
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary">SIMPAN</button>
+                            <router-link :to="{ name: 'penulis.index' }" type="submit" class="btn btn-danger">BACK</router-link>
                         </form>
                     </div>
                 </div>
@@ -109,11 +55,12 @@ import axios from 'axios'
 
 export default {
     setup() {
-        //state pegawai
-        const pegawai = reactive({
-            nama_pegawai: '',
-            nama_manager: '',
-            jumlah_pegawai: ''
+        //state proyek
+        const penulis = reactive({
+            penulis: '',
+            nama: '',
+            tanggal_lahir: '',
+            deskripsi: ''
         })
         //state validation
         const validation = ref([])
@@ -125,13 +72,13 @@ export default {
 onMounted(() => {
 
 //get API from Laravel Backend
-axios.get(`http://localhost:8000/api/pegawais/${route.params.id}`)
+axios.get(`http://localhost:8000/api/penulis/${route.params.id}`)
 .then(response => {
             
-    //assign state pegawai with response data
-    pegawai.nama_pegawai= response.data.data.nama_pegawai,
-    pegawai.nama_manager= response.data.data.nama_manager,
-    pegawai.jumlah_pegawai= response.data.data.jumlah_pegawai
+    //assign state proyek with response data
+    penulis.nama= response.data.data.nama,
+    penulis.tanggal_lahir= response.data.data.tanggal_lahir,
+    penulis.deskripsi= response.data.data.tanggal_lahir
 
 }).catch(error => {
     console.log(error.response.data)
@@ -140,17 +87,17 @@ axios.get(`http://localhost:8000/api/pegawais/${route.params.id}`)
 })
         //method update
         function update() {
-            let nama_pegawai = pegawai.nama_pegawai
-            let nama_manager = pegawai.nama_manager
-            let jumlah_pegawai = pegawai.jumlah_pegawai
-            axios.put(`http://localhost:8000/api/pegawais/${route.params.id}`, {
-                nama_pegawai: nama_pegawai,
-                nama_manager: nama_manager,
-                jumlah_pegawai: jumlah_pegawai
+            let nama = penulis.nama
+            let tanggal_lahir = penulis.tanggal_lahir
+            let deskripsi = penulis.deskripsi
+            axios.put(`http://localhost:8000/api/penulis/${route.params.id}`, {
+                nama : nama,
+                tanggal_lahir : tanggal_lahir,
+                deskripsi : deskripsi
             }).then(() => {
                 //redirect ke post index
                 router.push({
-                    name: 'pegawai.index'
+                    name: 'penulis.index'
                 })
             }).catch(error => {
                 //assign state validation with error
@@ -159,7 +106,7 @@ axios.get(`http://localhost:8000/api/pegawais/${route.params.id}`)
         }
         //return
         return {
-            pegawai,
+            penulis,
             validation,
             router,
             update

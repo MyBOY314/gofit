@@ -80,6 +80,25 @@ const routes = [
             },
 
             {
+                path: "/buku",
+                name: "buku.index",
+                component: () =>
+                    import('@/views//Buku/indexPage.vue'),
+            },
+            {
+                path: "/buku/create",
+                name: "buku.create",
+                component: () =>
+                    import('@/views/Buku/createPage.vue'),
+            },
+            {
+                path: "/buku/update",
+                name: "buku.update",
+                component: () =>
+                    import('@/views/Buku/updatePage.vue'),
+            },
+
+            {
                 path: "/pegawai",
                 name: "pegawai.index",
                 component: () =>

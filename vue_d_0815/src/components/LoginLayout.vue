@@ -3,6 +3,7 @@
       <nav class="navbar navbar-dark bg-dark fixed-top">
           <div class="container">
               <!-- Nama : nama panggilan kalian -->
+              <router-link :to="{ name: 'opening' }" class="btn btn-info me-2">Return</router-link>
               <a class="navbar-brand fw-bold" href="../index.php">COMIC READER 10815</a>
               <div class="d-flex justify-content-end">
                     <router-link :to="{ name: 'register' }" class="btn btn-primary me-2">Sign Up</router-link>
@@ -68,11 +69,96 @@
   </template>
   
   <script>
+  // import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
   export default {
+
+    // import { reactive, ref } from 'vue'
+    // import { useRouter } from 'vue-router'
+    // import axios from 'axios'
+    // import { useToast } from "vue-toastification";
+
     data() {
       return {
         image: { backgroundImage: "https://media.tenor.com/9vRAkntogEMAAAAd/background.gif" }
       };
-    }
-  };
-  </script>
+    },
+    
+    methods: {
+    // login(submitEvent) {
+    //   this.email = submitEvent.target.elements.email.value;
+    //   this.password = submitEvent.target.elements.password.value;
+    //   const auth = getAuth();
+    //   signInWithEmailAndPassword(auth, this.email, this.password)
+    //     .then(() => {
+    //       this.$router.push("/beranda");
+    //     })
+    //     .catch((error) => {
+    //       const errorCode = error.code;
+    //       const errorMessage = error.message;
+    //       console.log(errorCode);
+    //       console.log(errorMessage);
+    //       let alert_1 = document.querySelector("#alert_1");
+    //       alert_1.classList.remove("d-none");
+    //       alert_1.innerHTML = errorMessage;
+    //       console.log(alert_1);
+    //     });
+    // },
+    // moveToRegister() {
+    //   this.$router.push("/register");
+    // },
+  },
+
+//   setup() {
+
+// //inisialisasi vue router on Composition API
+// const router = useRouter()
+
+// //state user
+// const user = reactive({
+//     email: '',
+//     password: '',
+// })
+
+// //state validation
+// const validation = ref([])
+
+// //state loginFailed
+// const loginFailed = ref(null)
+
+// let toast = useToast();
+
+// //method login
+// function login() {
+//     //send server with axios
+//     axios
+//         .post("http://localhost:8000/api/pengguna")
+//         .then((response) => {
+//         if (response.data.success) {
+//             toast.success("Berhasil Login !",{
+//                 timeout: 2000
+//             })
+//             //set token
+//             localStorage.setItem("id", response.data.user.id);
+//             localStorage.setItem("token", response.data.access_token);
+//         }
+
+//         //set state loggedIn to true
+//         })
+//         .catch((error) => {
+//             loginFailed.value = true
+//         //set validation dari error response
+//         validation.value = error.response.data;
+//         });
+// }
+
+// return {
+//     user,           // <-- state user
+//     validation,     // <-- state validation 
+//     loginFailed,    // <-- state loggedIn
+//     login           // <-- method login
+// }
+//   }
+
+};
+</script>
+

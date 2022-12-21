@@ -8,38 +8,53 @@
                         <hr>
                         <form @submit.prevent="update">
                             <div class="form-group mb-3">
-                                <label class="form-label">Nama Pengguna</label>
-                                <input type="text" class="form-control" v-model="pengguna.nama"
-                                    placeholder={{pengguna.nama}}>
+                                <label for="content" class="form-label">Tanggal Peminjaman</label>
+                                <input class="form-control" type="date" v-model="peminjaman.waktu_mulai"
+                                    placeholder="Masukkan Tanggal Mulai">
                                 <!-- validation -->
-                                <div v-if="validation.nama" class="mt-2 alert alert-danger">
+                                <div v-if="validation.waktu_mulai" class="mt-2 alert alert-danger">
                                     {{
-                                            validation.nama[0]
+                                            validation.waktu_mulai[0]
                                     }}
                                 </div>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="content" class="form-label">Email</label>
-                                <input type="text" class="form-control" v-model="pengguna.email" placeholder={{pengguna.email}}>
+                                <label for="content" class="form-label">Durasi Peminjaman</label>
+                                <input class="form-control" v-model="peminjaman.durasi_peminjaman"
+                                    placeholder="Masukkan Durasi">
                                 <!-- validation -->
-                                <div v-if="validation.email" class="mt-2 alert alert-danger">
-                                    {{ validation.email[0]
+                                <div v-if="validation.durasi_peminjaman" class="mt-2 alert alert-danger">
+                                    {{
+                                            validation.durasi_peminjaman[0]
                                     }}
                                 </div>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="content" class="form-label">Telepon</label>
-                                <input class="form-control" v-model="pengguna.telepon"
-                                    placeholder={{pengguna.telepon}}>
+                                <label for="content" class="form-label">Buku</label>
+                                    <select class="select form-control" v-model="peminjaman.buku" placeholder="Pilih Buku">
+                                    <option disabled selected style="display: ruby;">Pilih Buku</option>
+                                    <option v-for="buku in buku" :key="buku.id" :value="buku.id">
+                                    {{ buku.nama }}
+                                    </option>
+                                </select>
                                 <!-- validation -->
-                                <div v-if="validation.telepon" class="mt-2 alert alert-danger">
+                                <div v-if="validation.buku" class="mt-2 alert alert-danger">
                                     {{
-                                            validation.telepon[0]
+                                            validation.buku[0]
                                     }}
                                 </div>
                             </div>
+                            <div class="form-group mb-3">
+                                <label for="content" class="form-label">Pengguna</label>
+                                <input class="form-control" v-model="peminjaman.pengguna" placeholder="Masukkan Pengguna">
+                                <!-- validation -->
+                                <div v-if="validation.pengguna" class="mt-2 alert alert-danger">
+                                    {{ validation.pengguna[0]
+                                    }}
+                                </div>
+                            </div>   
                             <button type="submit" class="btn btn-primary">SIMPAN</button>
-                            <router-link :to="{ name: 'pengguna.index' }" type="submit" class="btn btn-danger">BACK</router-link>
+                            <router-link :to="{ name: 'peminjaman.index' }" type="submit" class="btn btn-danger">BACK</router-link>
                             
                         </form>
                     </div>
@@ -56,11 +71,12 @@ import axios from 'axios'
 
 export default {
     setup() {
-        //state pengguna
-        const pengguna = reactive({
+        //state peminjaman
+        const peminjaman = reactive({
+            peminjaman: '',
+            waktu_mulai: '',
+            buku:'',
             pengguna: '',
-            email: '',
-            telepon: ''
         })
         //state validation
         const validation = ref([])
@@ -72,13 +88,14 @@ export default {
 onMounted(() => {
 
 //get API from Laravel Backend
-axios.get(`http://localhost:8000/api/pengguna/${route.params.id}`)
+axios.get(`http://localhost:8000/api/peminjaman/${route.params.id}`)
 .then(response => {
             
-    //assign state pengguna with response data
-    pengguna.nama= response.data.data.nama,
-    pengguna.email= response.data.data.email,
-    pengguna.telepon= response.data.data.telepon
+    //assign state peminjaman with response data
+    peminjaman.waktu_mulai= response.data.data.waktu_mulai,
+    peminjaman.durasi_peminjaman = response.data.data.durasi_peminjaman,
+    peminjaman.buku= response.data.data.buku,
+    peminjaman.pengguna= response.data.data.pengguna
 
 }).catch(error => {
     console.log(error.response.data)
@@ -87,17 +104,19 @@ axios.get(`http://localhost:8000/api/pengguna/${route.params.id}`)
 })
         //method update
         function update() {
-            let nama = pengguna.nama
-            let email = pengguna.email
-            let telepon = pengguna.telepon
-            axios.put(`http://localhost:8000/api/pengguna/${route.params.id}`, {
-                nama: nama,
-                email: email,
-                telepon: telepon
+            let waktu_mulai = peminjaman.waktu_mulai
+            let durasi_peminjaman = peminjaman.durasi_peminjaman
+            let buku = peminjaman.buku
+            let pengguna = peminjaman.pengguna
+            axios.put(`http://localhost:8000/api/peminjaman/${route.params.id}`, {
+                waktu_mulai: waktu_mulai,
+                durasi_peminjaman: durasi_peminjaman,
+                buku: buku,
+                pengguna: pengguna,
             }).then(() => {
                 //redirect ke post index
                 router.push({
-                    name: 'pengguna.index'
+                    name: 'peminjaman.index'
                 })
             }).catch(error => {
                 //assign state validation with error
@@ -106,7 +125,7 @@ axios.get(`http://localhost:8000/api/pengguna/${route.params.id}`)
         }
         //return
         return {
-            pengguna,
+            peminjaman,
             validation,
             router,
             update
