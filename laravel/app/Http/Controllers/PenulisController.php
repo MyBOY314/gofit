@@ -64,11 +64,11 @@ class PenulisController extends Controller
             ];
             Mail::to('davehabelpaprindey@gmail.com')->send(new Mailable($content));
             //Redirect jika berhasil mengirim email
-            return redirect()->route('Penulis.index')->with(['success'
+            return redirect()->route('penulis.index')->with(['success'
             => 'Data Berhasil Disimpan, email telah terkirim!']);
         } catch (Exception $e) {
             //Redirect jika gagal mengirim email
-            return redirect()->route('Penulis.index')->with(['success'
+            return redirect()->route('penulis.index')->with(['success'
             => 'Data Berhasil Disimpan, namun gagal mengirim email!']);
         }
     }
@@ -89,13 +89,13 @@ class PenulisController extends Controller
 
         Penulis::find($id)->update($request->all());
 
-        return redirect()->route('Penulis.index')
+        return redirect()->route('penulis.index')
                         ->with('success','Item updated successfully');
     }
     public function edit($id)
     {
         $penulis = Penulis::findOrfail($id);
-        return view('Penulis.edit',compact('Penulis'));
+        return view('penulis.edit',compact('penulis'));
     }
 
     public function show($id){

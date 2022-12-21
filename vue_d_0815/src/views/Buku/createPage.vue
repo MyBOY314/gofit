@@ -14,7 +14,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label for="content" class="form-label">Tahun Terbit</label>
-                                <input class="form-control" v-model="buku.tahun_terbit" placeholder="Masukkan Tahun Terbit Buku">
+                                <input type="date" class="form-control" v-model="buku.tahun_terbit" placeholder="Masukkan Tahun Terbit Buku">
                                 <div v-if="validation.tahun_terbit" class="mt-2 alert alert-danger">{{validation.tahun_terbit[0]}}</div>
                             </div>
                             <div class="form-group mb-3">

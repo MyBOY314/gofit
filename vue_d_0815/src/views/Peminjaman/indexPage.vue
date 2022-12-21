@@ -23,7 +23,8 @@
                                     <td><center>{{ peminjaman.tanggal_peminjaman }}</center></td>
                                     <td><center>{{ peminjaman.durasi_peminjaman }}</center></td>
                                     <td><center>{{ peminjaman.buku }}</center></td>
-                                    <td><center>{{ peminjaman.pengguna }}</center></td>
+                                    <td v-for="pengguna in pengguna" :key="pengguna.id" :value="pengguna.id">
+                                    <center>{{ pengguna.nama }}</center></td>
                                     <td class="text-center">
 
                                         <router-link :to="{ name:
@@ -47,6 +48,35 @@ import axios from 'axios'
 import { onMounted, ref } from 'vue'
 export default {
     setup() {
+
+//reactive state
+let buku = ref([])
+        //mounted
+        onMounted(() => {
+            //get API from Laravel Backend
+            axios.get('http://localhost:8000/api/buku')
+                .then(response => {
+                    //assign state posts with response data
+                    buku.value = response.data.data
+                }).catch(error => {
+                    console.log(error.response.data)
+                })
+        })
+
+//reactive state
+let pengguna = ref([])
+        //mounted
+        onMounted(() => {
+            //get API from Laravel Backend
+            axios.get('http://localhost:8000/api/pengguna')
+                .then(response => {
+                    //assign state posts with response data
+                    pengguna.value = response.data.data
+                }).catch(error => {
+                    console.log(error.response.data)
+                })
+        })
+
         //reactive state
         let peminjaman = ref([])
         //mounted
@@ -77,7 +107,9 @@ export default {
         //return
         return {
             peminjaman,
-            destroy
+            destroy,
+            buku,
+            pengguna,
         }
 
     },

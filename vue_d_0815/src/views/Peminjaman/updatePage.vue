@@ -46,7 +46,12 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label for="content" class="form-label">Pengguna</label>
-                                <input class="form-control" v-model="peminjaman.pengguna" placeholder="Masukkan Pengguna">
+                                <select class="select form-control" v-model="peminjaman.pengguna" placeholder="Pilih Buku">
+                                    <option disabled selected style="display: ruby;">Pilih Pengguna</option>
+                                    <option v-for="pengguna in pengguna" :key="pengguna.id" :value="pengguna.id">
+                                    {{ pengguna.nama }}
+                                    </option>
+                                </select>
                                 <!-- validation -->
                                 <div v-if="validation.pengguna" class="mt-2 alert alert-danger">
                                     {{ validation.pengguna[0]
@@ -71,6 +76,35 @@ import axios from 'axios'
 
 export default {
     setup() {
+
+ //reactive state
+ let buku = ref([])
+        //mounted
+        onMounted(() => {
+            //get API from Laravel Backend
+            axios.get('http://localhost:8000/api/buku')
+                .then(response => {
+                    //assign state posts with response data
+                    buku.value = response.data.data
+                }).catch(error => {
+                    console.log(error.response.data)
+                })
+        })
+
+//reactive state
+let pengguna = ref([])
+        //mounted
+        onMounted(() => {
+            //get API from Laravel Backend
+            axios.get('http://localhost:8000/api/pengguna')
+                .then(response => {
+                    //assign state posts with response data
+                    pengguna.value = response.data.data
+                }).catch(error => {
+                    console.log(error.response.data)
+                })
+        })
+
         //state peminjaman
         const peminjaman = reactive({
             peminjaman: '',
@@ -128,7 +162,9 @@ axios.get(`http://localhost:8000/api/peminjaman/${route.params.id}`)
             peminjaman,
             validation,
             router,
-            update
+            update,
+            buku,
+            pengguna,
         }
     }
 }

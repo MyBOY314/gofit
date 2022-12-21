@@ -45,7 +45,8 @@
                                 <input class="form-control" v-model="pengguna.email" placeholder="Masukkan Email">
                                 <!-- validation -->
                                 <div v-if="validation.email" class="mt-2 alert alert-danger">
-                                    {{ validation.email[0]
+                                    {{ 
+                                    validation.email[0]
                                     }}
                                 </div>
                             </div>

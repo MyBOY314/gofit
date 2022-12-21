@@ -14,7 +14,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label for="content" class="form-label">Tanggal Lahir</label>
-                                <input class="form-control" v-model="penulis.tanggal_lahir" placeholder="Masukkan Tanggal Lahir">
+                                <input type="date" class="form-control" v-model="penulis.tanggal_lahir" placeholder="Masukkan Tanggal Lahir">
                                 <div v-if="validation.tanggal_lahir" class="mt-2 alert alert-danger">{{validation.tanggal_lahir[0]}}</div>
                             </div>
                             <div class="form-group mb-3">
