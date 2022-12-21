@@ -34,7 +34,12 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label for="content" class="form-label">Penulis Buku</label>
-                                <input class="form-control"  v-model="buku.penulis" placeholder="Masukkan Penulis Buku">
+                                <select class="select form-control" v-model="buku.penulis" placeholder="Pilih Buku">
+                                    <option disabled selected style="display: ruby;">Pilih Penulis</option>
+                                    <option v-for="penulis in penulis" :key="penulis.id" :value="penulis.id">
+                                    {{ penulis.nama }}
+                                    </option>
+                                </select>
                                 <div v-if="validation.penulis" class="mt-2 alert alert-danger">{{validation.penulis[0]}}</div>
                             </div>
                             <button type="submit" class="btn btn-primary">SIMPAN</button>
@@ -47,12 +52,26 @@
 </template>
 
 <script>
-import { reactive, ref } from 'vue'
+import { onMounted,reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 
 export default{
     setup(){
+
+        let penulis = ref([])
+        //mounted
+        onMounted(() => {
+            //get API from Laravel Backend
+            axios.get('http://localhost:8000/api/penulis')
+                .then(response => {
+                    //assign state posts with response data
+                    penulis.value = response.data.data
+                }).catch(error => {
+                    console.log(error.response.data)
+                })
+        })
+
         const buku = reactive({
             nama: '',
             tahun_terbit: '',
@@ -93,7 +112,8 @@ export default{
             buku,
             validation,
             router,
-            store
+            store,
+            penulis,
         }
     }
 }

@@ -17,6 +17,7 @@
                                     <th scope="col"><center>Genre</center></th>
                                     <th scope="col"><center>Harga</center></th>
                                     <th scope="col"><center>Penulis</center></th>
+                                    <th scope="col"><center></center></th>
                                     <th scope="col"><center>Aksi</center></th>
                                 </tr>
                             </thead>
@@ -27,7 +28,11 @@
                                     <td><center>{{ buku.synopsis }}</center></td>
                                     <td><center>{{ buku.genre }}</center></td>
                                     <td><center>{{ buku.harga }}</center></td>
-                                    <td><center>{{ buku.penulis }}</center></td>
+                                    <!-- <td><center>{{ buku.penulis }}</center></td> -->
+                                    <td v-for="penulis in penulis" :key="penulis.id" :value="penulis.id">
+                                    <center>
+                                        {{ penulis.nama }}</center></td>
+                                    <td class="text-center"></td>
                                     <td class="text-center">
                                         <router-link :to="{ name:
                                         'buku.update', params: { id: buku.id } }" class="btn
@@ -51,6 +56,21 @@ import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 export default {
     setup() {
+
+//reactive state
+let penulis = ref([])
+        //mounted
+        onMounted(() => {
+            //get API from Laravel Backend
+            axios.get('http://localhost:8000/api/penulis')
+                .then(response => {
+                    //assign state posts with response data
+                    penulis.value = response.data.data
+                }).catch(error => {
+                    console.log(error.response.data)
+                })
+        })
+
         //reactive state
         let buku = ref([])
         const validation = ref([])
@@ -80,7 +100,8 @@ export default {
         //return
         return {
             buku,
-            postDelete
+            postDelete,
+            penulis,
         }
     },
 
