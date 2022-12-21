@@ -64,7 +64,7 @@ class PeminjamanController extends Controller
         ]);
         return new PeminjamanResource(true, 'Data Peminjaman Berhasil Ditambahkan!', $peminjaman); 
 
-         return redirect()->route('Peminjaman.index')
+         return redirect()->route('peminjaman.index')
                           ->with('success','Item deleted successfully'); 
         try {
             //Mengisi variabel yang akan ditampilkan pada view mail
@@ -77,14 +77,14 @@ class PeminjamanController extends Controller
             => 'Data Berhasil Disimpan, email telah terkirim!']);
         } catch (Exception $e) {
             //Redirect jika gagal mengirim email
-            return redirect()->route('Peminjaman.index')->with(['success'
+            return redirect()->route('peminjaman.index')->with(['success'
             => 'Data Berhasil Disimpan, namun gagal mengirim email!']);
         }
     }
     public function destroy($id)
     {
         Peminjaman::find($id)->delete();
-        return redirect()->route('Peminjaman.index')
+        return redirect()->route('peminjaman.index')
                         ->with('success','Item deleted successfully');
     }
     public function update(Request $request, $id)
@@ -98,7 +98,7 @@ class PeminjamanController extends Controller
 
         Peminjaman::find($id)->update($request->all());
 
-        return redirect()->route('Peminjaman.index')
+        return redirect()->route('peminjaman.index')
                         ->with('success','Item updated successfully');
     }
     public function edit($id)
