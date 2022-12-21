@@ -19,47 +19,40 @@
                                 </div>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="content" class="form-label">Password</label>
-                                <input type="password" class="form-control" v-model="peminjaman.password"
-                                    placeholder="Masukkan Password">
+                                <label for="content" class="form-label">Durasi Peminjaman</label>
+                                <input class="form-control" v-model="peminjaman.durasi_peminjaman"
+                                    placeholder="Masukkan Durasi">
                                 <!-- validation -->
-                                <div v-if="validation.password" class="mt-2 alert alert-danger">
+                                <div v-if="validation.durasi_peminjaman" class="mt-2 alert alert-danger">
                                     {{
-                                            validation.password[0]
+                                            validation.durasi_peminjaman[0]
                                     }}
                                 </div>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="content" class="form-label">Konfirmasi Password</label>
-                                <input class="form-control" v-model="peminjaman.password"
-                                    placeholder="Konfirmasi Password">
+                                <label for="content" class="form-label">Buku</label>
+                                    <select class="select form-control" v-model="peminjaman.buku" placeholder="Pilih Buku">
+                                    <option disabled selected style="display: ruby;">Pilih Buku</option>
+                                    <option v-for="buku in buku" :key="buku.id" :value="buku.id">
+                                    {{ buku.nama }}
+                                    </option>
+                                </select>
                                 <!-- validation -->
-                                <div v-if="validation.password" class="mt-2 alert alert-danger">
+                                <div v-if="validation.buku" class="mt-2 alert alert-danger">
                                     {{
-                                            validation.password[0]
+                                            validation.buku[0]
                                     }}
                                 </div>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="content" class="form-label">Email</label>
-                                <input class="form-control" v-model="peminjaman.email" placeholder="Masukkan Email">
+                                <label for="content" class="form-label">Pengguna</label>
+                                <input class="form-control" v-model="peminjaman.pengguna" placeholder="Masukkan Pengguna">
                                 <!-- validation -->
-                                <div v-if="validation.email" class="mt-2 alert alert-danger">
-                                    {{ validation.email[0]
+                                <div v-if="validation.pengguna" class="mt-2 alert alert-danger">
+                                    {{ validation.pengguna[0]
                                     }}
                                 </div>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="content" class="form-label">Telepon</label>
-                                <input class="form-control" v-model="peminjaman.telepon"
-                                    placeholder="Masukkan Nomor Telepon">
-                                <!-- validation -->
-                                <div v-if="validation.telepon" class="mt-2 alert alert-danger">
-                                    {{
-                                            validation.telepon[0]
-                                    }}
-                                </div>
-                            </div>
+                            </div>   
                             <button type="submit" class="btn btn-primary">SIMPAN</button>
                         </form>
                     </div>
@@ -77,9 +70,9 @@ export default {
         //state peminjaman
         const peminjaman = reactive({
             peminjaman: '',
-            password: '',
-            email: '',
-            telepon: ''
+            waktu_mulai: '',
+            buku:'',
+            pengguna: '',
         })
         //state validation
         const validation = ref([])
@@ -87,15 +80,15 @@ export default {
         const router = useRouter()
         //method store
         function store() {
-            let nama = peminjaman.nama
-            let password = peminjaman.password
-            let email = peminjaman.email
-            let telepon = peminjaman.telepon
+            let waktu_mulai = peminjaman.waktu_mulai
+            let durasi_peminjaman = peminjaman.durasi_peminjaman
+            let buku = peminjaman.buku
+            let pengguna = peminjaman.pengguna
             axios.post('http://localhost:8000/api/peminjaman', {
-                nama: nama,
-                password: password,
-                email: email,
-                telepon: telepon
+                nama: waktu_mulai,
+                durasi_peminjaman: durasi_peminjaman,
+                buku: buku,
+                pengguna: pengguna,
             }).then(() => {
                 //redirect ke post index
                 router.push({
@@ -106,12 +99,12 @@ export default {
                 validation.value = error.response.data
             })
         }
-        //return
         return {
             peminjaman,
             validation,
             router,
-            store
+            store,
+            // buku,
         }
     }
 }
