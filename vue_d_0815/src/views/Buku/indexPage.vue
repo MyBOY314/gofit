@@ -17,7 +17,6 @@
                                     <th scope="col"><center>Genre</center></th>
                                     <th scope="col"><center>Harga</center></th>
                                     <th scope="col"><center>Penulis</center></th>
-                                    <th scope="col"><center></center></th>
                                     <th scope="col"><center>Aksi</center></th>
                                 </tr>
                             </thead>
@@ -32,7 +31,6 @@
                                     <td v-for="penulis in penulis" :key="penulis.id" :value="penulis.id">
                                     <center>
                                         {{ penulis.nama }}</center></td>
-                                    <td class="text-center"></td>
                                     <td class="text-center">
                                         <router-link :to="{ name:
                                         'buku.update', params: { id: buku.id } }" class="btn

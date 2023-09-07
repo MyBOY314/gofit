@@ -22,22 +22,25 @@
     <!-- Background image -->
     <div id="intro" class="bg-image shadow-2-strong">
       <div class="mask" style="background-color: cadetblue;">
-        <img src="https://media.tenor.com/1rvpTvBQfrQAAAAC/bookshelf-books.gif" class="img-fluid" 
-        style="display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height:50%;
-  width: 20%;" />
+        <!-- <img src="https://cdn.thelondoneconomic.com/wp-content/uploa…f6-screen-shot-2021-08-04-at-15.40.32-768x432.jpg" class="img-fluid"/> -->
+        
         <div class="container d-flex align-items-center justify-content-center text-center h-100">
+        
           <div class="text-white">
-            <h1 class="mb-3">Comic Reader Kelompok 6</h1>
-            <h5 class="mb-4">Pemograman Web Ujian Akhir Semester</h5>
+            <h1 class="mb-3">GO-FIT</h1>
+            <h5 class="mb-4">"This is POWER"</h5>
             <router-link :to="{ name: 'login' }" class="btn btn-outline-light btn-lg m-2">Login</router-link>
 
             <a class="btn btn-outline-light btn-lg m-2" href="https://mdbootstrap.com/docs/standard/" target="_blank"
               role="button">Exit</a>
           </div>
         </div>
+        <img src="https://media.tenor.com/qhcRVSoKQ-YAAAAi/totoro-discord.gif" class="img-fluid" 
+        style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height:20%;
+  width: 30%;" />
       </div>
     </div>
     <!-- Background image -->
@@ -52,7 +55,7 @@
         <div class="row">
           <div class="col-md-6 gx-5 mb-4">
             <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
-              <img src="https://media.tenor.com/I05p_91Dph8AAAAd/cyberpunk-edgerunners-cyberpunk.gif" class="img-fluid" />
+              <img src="	https://media.tenor.com/PIMT_76mlyEAAAAd/subaru-exercising.gif" class="img-fluid" />
               <a href="#!">
                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
               </a>
@@ -60,17 +63,15 @@
           </div>
 
           <div class="col-md-6 gx-5 mb-4">
-            <h4><strong>Rekomendasi Series</strong></h4>
-            <p class="text-muted">
-                Cyberpunk: Edgerunners menceritakan seorang anak bernama David Martinez yang berusaha bertahan hidup di tengah-tengah kota masa depan.
-                 Kota tersebut terkenal dengan tindak korupsi serta obsesi atas teknologi dan modifikasi terhadap tubuh.
-                  Demi keberlangsungan hidupnya, David memutuskan untuk menjadi seorang edgerunner, yakni penjahat bayaran yang juga dikenal dengan sebutan 'Cyberpunk'.
-            </p>
-            <p><strong>Doloremque vero ex debitis veritatis?</strong></p>
+            <h4><strong>Rekomendasi Kelas</strong></h4>
             <p class="text-muted">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod itaque voluptate
               nesciunt laborum incidunt. Officia, quam consectetur. Earum eligendi aliquam illum
               alias, unde optio accusantium soluta, iusto molestiae adipisci et?
+            </p>
+            <p><strong>Jam Buka</strong></p>
+            <p class="text-muted">
+              Akan ada tujuh slot waktu ya, yaitu jam 7-9, 9-11, 11-13, 13-15, 15-17, 17-19, dan 19-21.
             </p>
           </div>
         </div>
@@ -81,24 +82,23 @@
 
       <!--Section: Content-->
       <section class="text-center">
-        <h4 class="mb-5"><strong>Kumpulan Buku Kami</strong></h4>
+        <h4 class="mb-5"><strong>Kumpulan User</strong></h4>
 
         <div class="row">
           <div class="col-lg-4 col-md-12 mb-4">
             <div class="card">
               <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                <img src="https://m.media-amazon.com/images/I/51OwMSETOJL.jpg" class="img-fluid" />
+                <img src="https://64.media.tumblr.com/5dcfbd3d5e6be84749ce531e476611fd/b3939d90abdb7785-eb/s1280x1920/db60b050e62e77c905a80fec8b72a50583cb5e34.jpg" class="img-fluid" />
                 <a href="#!">
                   <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                 </a>
               </div>
               <div class="card-body">
-                <h5 class="card-title">Lord Of The Rings</h5>
+                <h5 class="card-title">Cashier</h5>
                 <p class="card-text">
-                    Frodo, si hobbit muda, mewarisi sebuah cincin berkekuatan jahat milik Sauron, sang Penguasa Kegelapan. 
-                    Kini, ia harus memulai perjalanan panjang penuh bahaya menuju Mount Doom demi menghancurkannya.
+                    Login Kasir
                 </p>
-                <a href="#!" class="btn btn-primary">Button</a>
+                <router-link :to="{ name: 'member.index' }" class="btn btn-primary">Member</router-link>
               </div>
             </div>
           </div>
@@ -106,19 +106,17 @@
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card">
               <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                <img src="	https://upload.wikimedia.org/wikipedia/id/9/99/Solo_Leveling_Webtoon.png" class="img-fluid" />
+                <img src="https://imagecache.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/b0fcd678-6826-4fae-f073-01968f00fd00/width=1024/381594.jpeg" class="img-fluid" />
                 <a href="#!">
                   <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                 </a>
               </div>
               <div class="card-body">
-                <h5 class="card-title">Solo Leveling</h5>
+                <h5 class="card-title">Admin</h5>
                 <p class="card-text">
- Suatu ketika saat rombongan Sung Jin-Woo menyelesaikan sebuah Gate.
-  Namun di luar dugaan, Gate yang awalnya adalah rank D berubah menjadi sangat mematikan.
-   Singkat cerita Sung Jin-Woo menjadi tumbal dengan dirinya ditinggalkan di dalam Gate tersebut untuk menyelamatkan rekannya. 
+                  Login Admin
                 </p>
-                <a href="#!" class="btn btn-primary">Button</a>
+                <router-link :to="{ name: 'instruktur.index' }" class="btn btn-primary">Instruktur</router-link>
               </div>
             </div>
           </div>
@@ -126,18 +124,17 @@
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card">
               <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                <img src="https://upload.wikimedia.org/wikipedia/it/c/cb/Chainsaw_Man_Volume_1.jpg" class="img-fluid" />
+                <img src="https://steamuserimages-a.akamaihd.net/ugc/1692778329729634717/421568F160E8F219F72FCBF51BA224F55AD399E2/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false" class="img-fluid" />
                 <a href="#!">
                   <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                 </a>
               </div>
               <div class="card-body">
-                <h5 class="card-title">Chainsaw Man</h5>
+                <h5 class="card-title">Manager Operasional</h5>
                 <p class="card-text">
-                    Chainsaw Man menceritakan tentang seorang pemuda yang bernama Denji. Denji hidup bersama dengan Pochita, sang iblis dengan gergaji mesin.
-                     Kehidupan Denji sangat miris karena selain miskin dia juga harus melunasi hutang peninggalan orang tuanya.
+                  Login Manager Operasional
                 </p>
-                <a href="#!" class="btn btn-primary">Button</a>
+                <router-link :to="{ name: 'jadwalUmum.index' }" class="btn btn-primary">Jadwal</router-link>
               </div>
             </div>
           </div>

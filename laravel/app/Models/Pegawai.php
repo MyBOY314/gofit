@@ -14,12 +14,8 @@ class Pegawai extends Model
       * @var array 
       */
       protected $fillable = [ 
-        'nomor_induk_pegawai', 
-        'nama_pegawai',  
-        'id_departemen',
-        'email',
-        'telepon',
-        'gender',
-        'status',     
+        'nama',  
+        'password',
+        'jabatan',  
      ]; 
 }
