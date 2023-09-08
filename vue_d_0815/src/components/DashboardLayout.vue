@@ -5,6 +5,8 @@
     <header class="navbar navbar-dark sticky-top bg-dark flex-mdnowrap p-0 shadow">
         <div class="container">
               <a class="navbar-brand fw-bold" href="../index.php">GO-FIT 10815</a>
+              <img src="https://www.pertamina.com/landing/images/logo.png" class="img-fluid" 
+                style="  height:3%; width: 3%;" />
               <div class="d-flex justify-content-end">
                     <router-link :to="{ name: 'register' }" class="btn btn-primary me-2">Sign Up</router-link>
                     <router-link :to="{ name: 'login' }" class="btn btn-warning ms-2">Logout</router-link>
